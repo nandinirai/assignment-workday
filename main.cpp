@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Order {       
+class Order {    //Orders Constructor   
   public:          
-    int orderID;  
-    string orders;  
-    double dist;      
+    int orderID;  //Store OrderID
+    string orders;  //Store Order String AAMAAA
+    double dist;    //Store the distance in kms  
     Order(int x, string y, double z) { 
       orderID = x;
       orders=y;
@@ -13,7 +13,7 @@ class Order {
     }
 };
 
-int getTimeSlot(string orderItem){
+int getTimeSlot(string orderItem){ //Function to get timeSlot
   int totalSlots=0;
   for(int i=0;i<orderItem.size();i++){
     if(orderItem[i]!='A' && orderItem[i]!='M'){
@@ -30,9 +30,9 @@ int getTimeSlot(string orderItem){
   return totalSlots;
 }
 
-double orderTime(string orderItem, double distance){
+double orderTime(string orderItem, double distance){// Function to calculate orderTime
   int totalSlots=getTimeSlot(orderItem);
-  int numA=0, numM=0;
+  int numA=0, numM=0;//numA for Appetizer numM for MainCourse
   for(int i=0;i<orderItem.size();i++){
     if(orderItem[i]!='A' && orderItem[i]!='M'){
       return -1;
@@ -47,10 +47,10 @@ double orderTime(string orderItem, double distance){
   }
   if(totalSlots<=7){
     if(numA==0){
-      return (29+distance*8);
+      return (29+distance*8);//Time Required For Main Course
     }
     else if(numM==0){
-      return (17+distance*8);
+      return (17+distance*8);//Time Required For Appetizer
     }
     else{
     return (17+29+distance*8);
@@ -85,7 +85,7 @@ int main() {
       }
     }
   else{
-    cout<<"Order "<<obj[i].orderID<<" cannot be placed "<<"\n";
+    cout<<"Order "<<obj[i].orderID<<" cannot be placed "<<"\n";//Condition where Order cannot be placed
     }
   }
 } 
