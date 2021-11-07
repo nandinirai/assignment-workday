@@ -65,14 +65,24 @@ int main() {
   Order obj[]={Order(12,"AA", 5),Order(21,"AM", 1),
   Order(32,"M", 0.1),Order(14,"MMMMAAA", 10),
   Order(22,"A", 3)};
+  vector <Order> queue;
   
   int availableSlot = 0;
   int n = sizeof(obj)/sizeof(obj[0]);
   for(int i=0;i<n;i++){
+  availableSlot+=getTimeSlot(obj[i].orders);
   double totalTime = orderTime(obj[i].orders,obj[i].dist);
   if(totalTime<=150 && totalTime>-1)
-    {
+    { 
+      queue.push_back(obj[i]);
+      if(availableSlot<=7){
       cout<<"Order "<<obj[i].orderID<<" will take "<<totalTime<<"\n";
+      }
+      else{
+      int indx = queue.size();
+      double delayedTime = orderTime(queue[indx-2].orders,queue[indx-2].dist);
+      cout<<"Order "<<obj[i].orderID<<" will take "<<totalTime+delayedTime<<"\n";
+      }
     }
   else{
     cout<<"Order "<<obj[i].orderID<<" cannot be placed "<<"\n";
