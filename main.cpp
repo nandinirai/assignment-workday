@@ -65,18 +65,19 @@ int main() {
   Order obj[]={Order(12,"AA", 5),Order(21,"AM", 1),
   Order(32,"M", 0.1),Order(14,"MMMMAAA", 10),
   Order(22,"A", 3)};// Order Input
+  
   vector <Order> queue;//Queue to maintain orders that are getting accepted
   
   int availableSlot = 0;
   int n = sizeof(obj)/sizeof(obj[0]);
   for(int i=0;i<n;i++){
-  availableSlot+=getTimeSlot(obj[i].orders);
+  availableSlot+=getTimeSlot(obj[i].orders);//Fetching SLots available
   double totalTime = orderTime(obj[i].orders,obj[i].dist);
   if(totalTime<=150 && totalTime>-1)
     { 
       queue.push_back(obj[i]);
       if(availableSlot<=7){
-      cout<<"Order "<<obj[i].orderID<<" will take "<<totalTime<<"\n";
+      cout<<"Order "<<obj[i].orderID<<" will take "<<totalTime<<"\n";//No Delay
       }
       else{
       int indx = queue.size();
