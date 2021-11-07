@@ -64,8 +64,8 @@ double orderTime(string orderItem, double distance){// Function to calculate ord
 int main() {
   Order obj[]={Order(12,"AA", 5),Order(21,"AM", 1),
   Order(32,"M", 0.1),Order(14,"MMMMAAA", 10),
-  Order(22,"A", 3)};
-  vector <Order> queue;
+  Order(22,"A", 3)};// Order Input
+  vector <Order> queue;//Queue to maintain orders that are getting accepted
   
   int availableSlot = 0;
   int n = sizeof(obj)/sizeof(obj[0]);
@@ -80,7 +80,7 @@ int main() {
       }
       else{
       int indx = queue.size();
-      double delayedTime = orderTime(queue[indx-2].orders,queue[indx-2].dist);
+      double delayedTime = orderTime(queue[indx-2].orders,queue[indx-2].dist);//Delayed in case of no available slots
       cout<<"Order "<<obj[i].orderID<<" will take "<<totalTime+delayedTime<<"\n";
       }
     }
