@@ -31,7 +31,7 @@ int getTimeSlot(string orderItem){ //Function to get timeSlot
 }
 
 double orderTime(string orderItem, double distance){// Function to calculate orderTime
-  int totalSlots=getTimeSlot(orderItem);
+  int totalSlots=getTimeSlot(orderItem);//Fetching timeslot required for an Order
   int numA=0, numM=0;//numA for Appetizer numM for MainCourse
   for(int i=0;i<orderItem.size();i++){
     if(orderItem[i]!='A' && orderItem[i]!='M'){
@@ -53,7 +53,7 @@ double orderTime(string orderItem, double distance){// Function to calculate ord
       return (17+distance*8);//Time Required For Appetizer
     }
     else{
-    return (17+29+distance*8);
+      return (17+29+distance*8);//Time Required for full distance
     }
   }
   else{
